@@ -6,9 +6,16 @@
     <title>Incio Sesión</title>
 </head>
 <body>
+<?php
+    //Incluir los enlaces
+    require('views/header.php');
+    ?>
     <form action="?method=auth" method="post">
         <label>Usuario</label>
-        <input type="text">
+        <input type="text" value="" name="user"><br>
+        <label>Contraseña</label>
+        <input type="password" value="" name="password"><br>
+        <input type="submit" value="Login">
     </form>
 </body>
 </html>

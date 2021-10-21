@@ -31,7 +31,7 @@ class App
         }
         //si no hay nada asignado, por defecto veré el método index
         else {
-            $method = 'index';
+            $method = 'login';
         }
 
         //try catch
@@ -52,11 +52,11 @@ class App
         }
     }
 
-    public function index()
+    /*public function index()
     {
         //incluyo la vista index.php
         include('views/index.php');
-    }
+    }*/
 
     public function login()
     {
@@ -65,9 +65,15 @@ class App
 
     public function auth()
     {
-        setcookie ('user', $_POST['usuario'], time() + 3600 * 24);
-        setcookie ('password', $_POST['contraseña'], time() + 3600 * 24);
-        header('location:index.php?method=home');
+        if ($_POST['user'] == "florin" and $_POST['password'] == 'azul') {
+            header("Location:bienvenido.html");
+            setcookie('user', $_POST['user'], time() + 3600 * 24);
+            setcookie('password', $_POST['password'], time() + 3600 * 24);
+            header('location:index.php?method=home');
+        } else {
+            include('views/login.php');
+            echo "Usuario o constraseña incorrecto";
+        }
     }
     public function home()
     {
@@ -75,8 +81,9 @@ class App
     }
     public function logout()
     {
-        setcookie ('user', $_POST['usuario'], time() -1);
-        setcookie ('password', $_POST['contraseña'], time() -1);
+        setcookie('user', $_POST['user'], time() - 1);
+        setcookie('password', $_POST['password'], time() - 1);
         include('views/login.php');
+        echo "Has cerrado sesión.";
     }
 }

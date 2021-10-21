@@ -10,7 +10,7 @@
     //Incluir los enlaces
     require('views/header.php');
   ?>
-    <h1>Esta es la página principal</h1>
-    <h3>Arriba puedes iniciar sesión</h3>
+    <h1>Esta es la presentación de la pagina al acceder</h1>
+    <h3>Arriba tienes el botón para iniciar sesión</h3>
 </body>
 </html>
