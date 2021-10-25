@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+<!-- esto se podría usar como página de bienvenida al sitio web, antes de iniciar sesión-->
 <?php
     //Incluir los enlaces
     require('views/header.php');
