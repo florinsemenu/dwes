@@ -18,10 +18,11 @@ class App
 
     public function auth()
     {
-        session_start();
         if ($_POST['user'] == "florin" and $_POST['password'] == 'azul') {
+            session_start();
             header("Location:bienvenido.html");
-            setcookie('user', $_POST['user'], time() + 3600 * 24);
+            $_SESSION['user']=$_POST['user'];
+            //TE HAS QUEDAD AQUÍ
             setcookie('password', $_POST['password'], time() + 3600 * 24);
             header('location:index.php?method=home');
         } else {
