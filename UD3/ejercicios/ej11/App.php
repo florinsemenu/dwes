@@ -18,6 +18,7 @@ class App
 
     public function auth()
     {
+        session_start();
         if ($_POST['user'] == "florin" and $_POST['password'] == 'azul') {
             header("Location:bienvenido.html");
             setcookie('user', $_POST['user'], time() + 3600 * 24);

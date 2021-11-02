@@ -7,9 +7,13 @@
     <title>Colores</title>
 </head>
 <body>
-    <a href="?cambio&color=red">Rojo</a>
-    <a href="?cambio&color=green">Verde</a>
-    <a href="?cambio&color=blue">Azul</a>
+    <a href="?method=cambio&color=red"><button>Rojo</button></a>
+    <a href="?method=cambio&color=green"><button>Verde</button></a>
+    <a href="?method=cambio&color=blue"><button>Azul</button></a>
+    <a href="?method=cambio&color=orange"><button>Naranja</button></a>
+    <a href="?method=cambio&color=yellow"><button>Amarillo</button></a>
+    <a href="?method=cambio&color=white"><button>Blanco</button></a>
+    <a href="?method=cambio&color=black"><button>Negro</button></a>
     </body>
 
 </html>
