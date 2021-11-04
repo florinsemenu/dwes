@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deseos Cookie</title>
+    <title>Deseos Session</title>
 </head>
 
 <body>
@@ -15,9 +15,10 @@
     <h1>Bienvenido <?php echo $_COOKIE['user'] ?></h1>
     <!-- mostrar deseos añadidos -->
     <?php
-    if (isset($_COOKIE['deseos'])) {
+    session_start();
+    if (isset($_SESSION['deseos'])) {
         echo "<h3>Tus deseos son:</h3> <br>";
-        $deseos = unserialize($_COOKIE['deseos']);
+        $deseos = $_SESSION['deseos'];
         foreach ($deseos as $nr => $deseo) {
             echo "<li> Deseo nº $nr: " . $deseo . ' <a href="?method=delete&nr=' . $nr . '"> borrar</a> </li>';
         }

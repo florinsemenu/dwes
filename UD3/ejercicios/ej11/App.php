@@ -21,9 +21,8 @@ class App
         if ($_POST['user'] == "florin" and $_POST['password'] == 'azul') {
             session_start();
             header("Location:bienvenido.html");
-            $_SESSION['user']=$_POST['user'];
-            //TE HAS QUEDAD AQUÍ
-            setcookie('password', $_POST['password'], time() + 3600 * 24);
+            $_SESSION['user'] = $_POST['user'];
+            $_SESSION['password'] = $_POST['password'];
             header('location:index.php?method=home');
         } else {
             include('views/login.php');
@@ -38,38 +37,39 @@ class App
 
     public function logout()
     {
-        setcookie('user', $_POST['user'], time() - 1);
-        setcookie('password', $_POST['password'], time() - 1);
-        setcookie('deseos', '',  1);
+        session_start();
+        session_destroy();
         include('views/login.php');
         echo "Has cerrado sesión.";
     }
 
     public function new()
     {
+        session_start();
         //declaro el array
         $deseos = array();
-        //si la cookie existe, deserializo la cookie, añado el post
-        //y luego lo guardo en la cookie
-        if (isset($_COOKIE['deseos'])) {
-            $deseos = unserialize($_COOKIE['deseos']);
+        //si la session existe, deserializo la session, añado el post
+        //y luego lo guardo en la session
+        if (isset($_SESSION['deseos'])) {
+            $deseos = $_SESSION['deseos'];
             $deseos[] = $_POST['wish'];
-            setcookie('deseos', serialize($deseos), time() + 3600);
+            $_SESSION['deseos'] = $deseos;
         }
-        //si no hay cookie, guardo el post en el array deseos y guardo la cookie
+        //si no hay session, guardo el post en el array deseos y guardo la session
         else {
             $deseos[] = $_POST['wish'];
-            setcookie('deseos', serialize($deseos), time() + 3600);
+            $_SESSION['deseos'] = $deseos;
         }
         header('location:index.php?method=home');
     }
 
     public function delete()
     {
-        //si la cookie existe
-        if (isset($_COOKIE['deseos'])) {
-            //desserializo la cookie
-            $deseos = unserialize($_COOKIE['deseos']);
+        session_start();
+        //si la session existe
+        if (isset($_SESSION['deseos'])) {
+            //desserializo la session
+            $deseos = $_SESSION['deseos'];
         } else {
             //si no, creo el array vacío
             $deseos = [];
@@ -77,14 +77,15 @@ class App
         //conisgo $nr del deseo y digo que borre ese nr del array deseos
         $id = $_GET['nr'];
         unset($deseos[$id]);
-        //vuelvo a guardar la cookie con los cambios hechos
-        setcookie('deseos', serialize($deseos), time() + 60 * 60 * 2);
+        //vuelvo a guardar la session con los cambios hechos
+        $_SESSION['deseos'] = $deseos;
         header('Location: index.php?method=home');
     }
 
     public function empty()
     {
-        setcookie('deseos', '',  1);
+        session_start();
+        session_destroy();
         header('location:index.php?method=home');
     }
 }
