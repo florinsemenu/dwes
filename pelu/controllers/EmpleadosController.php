@@ -7,6 +7,7 @@ class EmpleadosController
     }
     public function empleados()
     {
-        require('app/controllers/EmpleadoController.php');
+        echo "esto es empleados";
+        require "views/empleado.php";
     }
 }

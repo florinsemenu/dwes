@@ -7,6 +7,7 @@ class HomeController
     }
     public function home()
     {
-        require "app/views/home.php";
+        echo "esto es el echo de home";
+        require "views/home.php";
     }
 }
