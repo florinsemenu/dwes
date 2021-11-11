@@ -21,24 +21,19 @@ class App
         // controlador/metodo/argumentos
 
         //hago un split por las /
+        //en el primer parametro recojo el nombre del controller
         $arguments = explode('/', trim($url, '/'));
         $controllerName = array_shift($arguments);
-
-        //obtener nombre controlador
-        if (isset($_GET['controller'])) {
-            $controllerName = $_GET['controller'];
-        } else {
-            $controllerName = 'home';
-        }
         $controllerName = ucwords($controllerName) . "Controller";
-
-        //obtener nombre método
-        if (isset($_GET['method'])) {
-            $method = $_GET['method'];
+        
+        //y aquí recojo el nombre del método
+        if (count($arguments)) {
+            $method =  array_shift($arguments);
         } else {
-            $method = 'home';
+            $method = "home";
         }
 
+        echo "$controllerName -> $method";
         //accedo al archivo del controlador
         $file = "controllers/$controllerName" . ".php";
         if (file_exists($file)) {

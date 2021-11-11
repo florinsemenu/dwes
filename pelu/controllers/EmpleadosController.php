@@ -5,13 +5,12 @@ class EmpleadosController
     {
         //echo "En Empleados Controller;
     }
-    public function empleados()
+    public function list()
     {
-        echo "esto es empleados";
         require "views/empleado.php";
     }
 
-    public function newEmpleado()
+    public function new()
     {
         session_start();
         //declarar el array
@@ -28,7 +27,7 @@ class EmpleadosController
             $_SESSION['empleados'] = $empleados;
         }
     }
-    public function deleteEmpleado()
+    public function delete()
     {
         session_start();
         if (isset($_SESSION['empleados'])) {
