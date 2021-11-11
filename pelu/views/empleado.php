@@ -13,14 +13,14 @@
 
     </header>
     <h2 class="titulo">CONTACTO</h2>
-    <form action="" method="post" id="formulario">
-        <input type="text" id="nombre" class="formul" placeholder="NOMBRE" />
-        <input type="text" id="apellido" class="formul" placeholder="APELLIDO" />
-        <input type="text" id="telefono" class="formul" placeholder="TELÉFONO" />
-        <input type="text" id="email" class="formul" placeholder="EMAIL" />
-
-        <p><input type="submit" class="formul" value="ALTA EMPLEADO"></p>
+    <form action="?method=newEmpleado" method="post">
+        <input type="text" value="" name="nombre">
+        <input type="text" value="" name="apellido">
+        <input type="text" value="" name="telefono">
+        <input type="text" value="" name="email">
+        <input type="submit" value="Añadir">
     </form>
+
 </body>
 
 </html>
