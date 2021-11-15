@@ -4,7 +4,7 @@
         controllers -> EmpleadosController.php
             index()->
 */
-
+namespace Core;
 class App
 {
     function __construct()
@@ -42,6 +42,7 @@ class App
             header("HTTP/1.0 404 Not Found");
             die();
         }
+        $controllerName = '\\Controllers\\' . $controllerName;
 
         //creo un objeto, llamo al metodo del objeto y le paso los argumentos.
         $controllerObject = new $controllerName;

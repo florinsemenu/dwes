@@ -1,13 +1,19 @@
 <?php
+namespace Controllers;
 class EmpleadosController
 {
     function __construct()
     {
         //echo "En Empleados Controller;
     }
-    public function list()
+    public function alta()
     {
-        require "views/empleado.php";
+        require "views/altaEmpleado.php";
+    }
+    public function lista()
+    {
+        
+        require "views/empleados.php";
     }
 
     public function new()

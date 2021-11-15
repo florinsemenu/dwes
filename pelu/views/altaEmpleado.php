@@ -13,7 +13,7 @@
 
     </header>
     <h2 class="titulo">CONTACTO</h2>
-    <form action="?method=newEmpleado" method="post">
+    <form action="?method=new" method="post">
         <ul>
             <li>Nombre: <input type="text" value="" name="nombre"></li>
             <li>Apellido: <input type="text" value="" name="apellido"></li>

@@ -1,4 +1,5 @@
 <?php
+namespace Controllers;
 class HomeController
 {
     function __construct()
