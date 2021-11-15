@@ -7,6 +7,7 @@
 </head>
 <body>
 <?php require "views/header.php" ?>
+<h1>Lista de empleados</h1>
 <?php
     if (isset($_SESSION['empleados'])) {
         echo "<h3>Tus empleados son:</h3> <br>";
