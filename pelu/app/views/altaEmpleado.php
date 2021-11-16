@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <?php require "views/header.php" ?>
+    <?php require "app/views/header.php" ?>
     <header class="header">
 
     </header>

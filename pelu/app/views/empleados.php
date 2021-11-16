@@ -6,7 +6,7 @@
     <title>Lista Empleados</title>
 </head>
 <body>
-<?php require "views/header.php" ?>
+<?php require "app/views/header.php" ?>
 <h1>Lista de empleados</h1>
 <?php
     if (isset($_SESSION['empleados'])) {

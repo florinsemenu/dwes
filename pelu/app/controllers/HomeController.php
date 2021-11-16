@@ -1,5 +1,5 @@
 <?php
-namespace Controllers;
+namespace App\Controllers;
 class HomeController
 {
     function __construct()
@@ -8,6 +8,6 @@ class HomeController
     }
     public function home()
     {
-        require "views/home.php";
+        require "app/views/home.php";
     }
 }

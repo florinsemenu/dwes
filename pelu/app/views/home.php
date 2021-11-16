@@ -6,7 +6,7 @@
     <title>Home</title>
 </head>
 <body>
-    <?php require "views/header.php" ?>
+    <?php require "app/views/header.php" ?>
     <h1>Esto es el Home</h1>
 </body>
 </html>

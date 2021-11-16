@@ -35,14 +35,14 @@ class App
 
         echo "$controllerName -> $method";
         //accedo al archivo del controlador
-        $file = "controllers/$controllerName" . ".php";
+        $file = "app/controllers/$controllerName" . ".php";
         if (file_exists($file)) {
             require_once $file;
         } else {
             header("HTTP/1.0 404 Not Found");
             die();
         }
-        $controllerName = '\\Controllers\\' . $controllerName;
+        $controllerName = '\\App\\Controllers\\' . $controllerName;
 
         //creo un objeto, llamo al metodo del objeto y le paso los argumentos.
         $controllerObject = new $controllerName;

@@ -1,5 +1,5 @@
 <?php
-namespace Controllers;
+namespace App\Controllers;
 class EmpleadosController
 {
     function __construct()
@@ -8,12 +8,12 @@ class EmpleadosController
     }
     public function alta()
     {
-        require "views/altaEmpleado.php";
+        require "app/views/altaEmpleado.php";
     }
     public function lista()
     {
         
-        require "views/empleados.php";
+        require "app/views/empleados.php";
     }
 
     public function new()
