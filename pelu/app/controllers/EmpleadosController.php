@@ -12,7 +12,7 @@ class EmpleadosController
     }
     public function lista()
     {
-        
+        //llmar al modelo para recuperar los empleados de la bd
         require "app/views/empleados.php";
     }
 
@@ -46,4 +46,5 @@ class EmpleadosController
         $_SESSION['empleados'] = $empleados;
         header(' Location:index.php?method=home');
     }
+   
 }
