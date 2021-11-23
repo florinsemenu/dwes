@@ -35,9 +35,14 @@ class ServiciosController
         $service->detail = $_REQUEST['detail'];
         $service->price = $_REQUEST['price'];
         $service->insert();
-        header('Location:/service');
+        header('Location:/servicios');
     }
-
+public function edit($arguments)
+{
+    $id = (int) $arguments[0];
+    $service = Servicio::find($id);
+    require 'app/views/servicios/edit.php';
+}
     //metodo que actualiza un servicio
     public function update()
     {
@@ -47,6 +52,10 @@ class ServiciosController
         $service->name = $_REQUEST['name'];
         $service->detail = $_REQUEST['detail'];
         $service->price = $_REQUEST['price'];
+        //tengo que indicar que lo quiero guardar
+        $service->save();
+        //y después tengo que redireccionar
+        header('Location:/servicios/index');
     }
 
     //metodo que borra un servicio
@@ -55,6 +64,6 @@ class ServiciosController
         $id = (int) $arguments[0];
         $service = Servicio::find($id);
         $service->delete();
-        header('Locarion:/service');
+        header('Location:/servicios/index');
     }
 }

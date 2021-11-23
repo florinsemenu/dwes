@@ -1,50 +1,69 @@
 <?php
+
 namespace App\Controllers;
+
+require_once "app/models/Servicio.php";
+
+use App\Models\Empleado;
+
 class EmpleadosController
 {
-    function __construct()
+
+    //metodo que muestra todos los servicios
+    public function index()
     {
-        //echo "En Empleados Controller;
-    }
-    public function alta()
-    {
-        require "app/views/altaEmpleado.php";
-    }
-    public function lista()
-    {
-        //llmar al modelo para recuperar los empleados de la bd
-        require "app/views/empleados.php";
+        //buscar datos
+        $employee = Empleado::all();
+        //pasar a la vista
+        require('app/views/empleados/index.php');
     }
 
-    public function new()
+    //metodo que muestra los detalles del servicio
+    public function show($args)
     {
-        session_start();
-        //declarar el array
-        $empleados = array();
-        if (isset($_SESSION['empleados'])) {
-            $empleados = $_SESSION['empleados'];
-            $empleados[] = $_POST['nombre'];
-            $empleados[] = $_POST['apellido'];
-            $empleados[] = $_POST['telefono'];
-            $empleados[] = $_POST['email'];
-            $_SESSION['empleados'] = $empleados;
-        } else {
-            $empleados = $_POST['empleado'];
-            $_SESSION['empleados'] = $empleados;
-        }
+        list($id) = $args;
+        $service = Servicio::find($id);
+        require('app/views/servicios/show.php');
     }
-    public function delete()
+
+    //metodo que añade un nuevo servicio
+    public function store()
     {
-        session_start();
-        if (isset($_SESSION['empleados'])) {
-            $empleados = $_SESSION['empleados'];
-        } else {
-            $empleados = [];
-        }
-        $id = $_GET['id'];
-        unset($empleados[$id]);
-        $_SESSION['empleados'] = $empleados;
-        header(' Location:index.php?method=home');
+        $service = new Servicio();
+        $service->id = $_REQUEST['id'];
+        $service->name = $_REQUEST['name'];
+        $service->detail = $_REQUEST['detail'];
+        $service->price = $_REQUEST['price'];
+        $service->insert();
+        header('Location:/servicios');
     }
-   
+public function edit($arguments)
+{
+    $id = (int) $arguments[0];
+    $service = Servicio::find($id);
+    require 'app/views/servicios/edit.php';
+}
+    //metodo que actualiza un servicio
+    public function update()
+    {
+        $id = $_REQUEST['id'];
+        $service = Servicio::find($id);
+        $service->id = $_REQUEST['id'];
+        $service->name = $_REQUEST['name'];
+        $service->detail = $_REQUEST['detail'];
+        $service->price = $_REQUEST['price'];
+        //tengo que indicar que lo quiero guardar
+        $service->save();
+        //y después tengo que redireccionar
+        header('Location:/servicios/index');
+    }
+
+    //metodo que borra un servicio
+    public function delete($arguments)
+    {
+        $id = (int) $arguments[0];
+        $service = Servicio::find($id);
+        $service->delete();
+        header('Location:/servicios/index');
+    }
 }

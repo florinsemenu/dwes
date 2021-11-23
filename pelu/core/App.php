@@ -33,7 +33,7 @@ class App
             $method = "home";
         }
 
-        echo "$controllerName -> $method";
+        // echo "$controllerName -> $method";
         //accedo al archivo del controlador
         $file = "app/controllers/$controllerName" . ".php";
         if (file_exists($file)) {
