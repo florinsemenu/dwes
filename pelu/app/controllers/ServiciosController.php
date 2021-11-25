@@ -30,10 +30,11 @@ class ServiciosController
     public function store()
     {
         $service = new Servicio();
-        $service->id = $_REQUEST['id'];
         $service->name = $_REQUEST['name'];
+        $service->gender = $_REQUEST['gender'];
         $service->detail = $_REQUEST['detail'];
         $service->price = $_REQUEST['price'];
+        $service->time = $_REQUEST['time'];
         $service->insert();
         header('Location:/servicios');
     }
@@ -48,10 +49,11 @@ public function edit($arguments)
     {
         $id = $_REQUEST['id'];
         $service = Servicio::find($id);
-        $service->id = $_REQUEST['id'];
         $service->name = $_REQUEST['name'];
+        $service->gender = $_REQUEST['gender'];
         $service->detail = $_REQUEST['detail'];
         $service->price = $_REQUEST['price'];
+        $service->time = $_REQUEST['time'];
         //tengo que indicar que lo quiero guardar
         $service->save();
         //y después tengo que redireccionar

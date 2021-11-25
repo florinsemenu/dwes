@@ -51,22 +51,30 @@ class Empleado extends Model
 
         //hay que arreglar de aquí hacia abajo
         $db = Empleado::db();
-        $stmt = $db->prepare('INSERT INTO services(id, name, detail, price) VALUES(:id, :name, :detail, :price)');
-        $stmt->bindValue(':id', $this->id);
+        $stmt = $db->prepare('INSERT INTO employee(name, surname, email, details, birthdate, password, active, admin) VALUES(:name, :surname, :email, :details, :birthdate, :password, :active, :admin)');
         $stmt->bindValue(':name', $this->name);
-        $stmt->bindValue(':detail', $this->detail);
-        $stmt->bindValue(':detail', $this->price);
+        $stmt->bindValue(':surname', $this->surname);
+        $stmt->bindValue(':email', $this->email);
+        $stmt->bindValue(':details', $this->details);
+        $stmt->bindValue(':birthdate', $this->birthdate);
+        $stmt->bindValue(':password', $this->password);
+        $stmt->bindValue(':active', $this->active);
+        $stmt->bindValue(':admin', $this->admin);
         return $stmt->execute();
     }
 
     public function save()
     {
         $db = Empleado::db();
-        $stmt = $db->prepare('UPDATE services SET id = :id, name = :name, detail = :detail, price = :price WHERE id = :id');
-        $stmt->bindValue(':id', $this->id);
+        $stmt = $db->prepare('UPDATE services SET name = :name, surname = :surname, email = :email, details = :details, birthdate = :birthdate, password = :password, active = :active, admin = :admin WHERE id = :id');
         $stmt->bindValue(':name', $this->name);
-        $stmt->bindValue(':detail', $this->detail);
-        $stmt->bindValue(':price', $this->price);
+        $stmt->bindValue(':surname', $this->surname);
+        $stmt->bindValue(':email', $this->email);
+        $stmt->bindValue(':details', $this->details);
+        $stmt->bindValue(':birthdate', $this->birthdate);
+        $stmt->bindValue(':password', $this->password);
+        $stmt->bindValue(':active', $this->active);
+        $stmt->bindValue(':admin', $this->admin);
         return $stmt->execute();
     }
     public function delete()

@@ -30,8 +30,8 @@ class EmpleadosController
     public function store()
     {
         $service = new Servicio();
-        $service->id = $_REQUEST['id'];
         $service->name = $_REQUEST['name'];
+        $service->name = $_REQUEST['gender'];
         $service->detail = $_REQUEST['detail'];
         $service->price = $_REQUEST['price'];
         $service->insert();
