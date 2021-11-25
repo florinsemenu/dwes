@@ -8,13 +8,13 @@ use App\Models\Servicio;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edición</title>
+    <title>Edición de servicio</title>
 </head>
 
 <body>
 <?php require "app/views/header.php" ?>
     <div>
-        <h1>Edicion de usuario</h1>
+        <h1>Edicion de servicio</h1>
         <form method="post" action="<?= "/servicios/update" ?>">
         <input type="hidden" name="id" value="<?php echo $user->id ?>">
         <div>

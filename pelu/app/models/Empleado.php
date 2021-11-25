@@ -15,16 +15,16 @@ class Empleado extends Model
         //obtener conexión
         $db = Empleado::db();
         //preparar consulta
-        $sql = "SELECT * FROM employee";
+        $sql = "SELECT * FROM employees";
         //ejecutar
         //query para ejecutar la consulta
         $statement = $db->query($sql);
         //el resultado puede ser tomado usando las PDO
         //fetch recoge registro a registro. Si hay muchos, necesita un bucle
         //fetch_all recoge arrays
-        $employee = $statement->fetchAll(PDO::FETCH_CLASS, Empleado::class);
+        $employees = $statement->fetchAll(PDO::FETCH_CLASS, Empleado::class);
 
-        return $employee;
+        return $employees;
     }
 
     /*
@@ -38,7 +38,7 @@ class Empleado extends Model
     public static function find($id)
     {
         $db = Empleado::db();
-        $stmt = $db->prepare('SELECT * FROM employee WHERE id=:id');
+        $stmt = $db->prepare('SELECT * FROM employees WHERE id=:id');
         $stmt->execute(array(':id' => $id));
         //Para cargar un objeto Empleado debemos usar setFetchMode y fetch
         $stmt->setFetchMode(PDO::FETCH_CLASS, Empleado::class);
@@ -51,7 +51,7 @@ class Empleado extends Model
 
         //hay que arreglar de aquí hacia abajo
         $db = Empleado::db();
-        $stmt = $db->prepare('INSERT INTO employee(name, surname, email, details, birthdate, password, active, admin) VALUES(:name, :surname, :email, :details, :birthdate, :password, :active, :admin)');
+        $stmt = $db->prepare('INSERT INTO employees(name, surname, email, details, birthdate, password, active, admin) VALUES(:name, :surname, :email, :details, :birthdate, :password, :active, :admin)');
         $stmt->bindValue(':name', $this->name);
         $stmt->bindValue(':surname', $this->surname);
         $stmt->bindValue(':email', $this->email);
@@ -66,7 +66,7 @@ class Empleado extends Model
     public function save()
     {
         $db = Empleado::db();
-        $stmt = $db->prepare('UPDATE services SET name = :name, surname = :surname, email = :email, details = :details, birthdate = :birthdate, password = :password, active = :active, admin = :admin WHERE id = :id');
+        $stmt = $db->prepare('UPDATE employees SET name = :name, surname = :surname, email = :email, details = :details, birthdate = :birthdate, password = :password, active = :active, admin = :admin WHERE id = :id');
         $stmt->bindValue(':name', $this->name);
         $stmt->bindValue(':surname', $this->surname);
         $stmt->bindValue(':email', $this->email);
@@ -80,7 +80,7 @@ class Empleado extends Model
     public function delete()
     {
         $db = Empleado::db();
-        $stmt = $db->prepare('DELETE FROM services WHERE id = :id');
+        $stmt = $db->prepare('DELETE FROM employees WHERE id = :id');
         $stmt->bindValue(':id', $this->id);
         return $stmt->execute();
     }

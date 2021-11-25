@@ -9,61 +9,77 @@ use App\Models\Empleado;
 class EmpleadosController
 {
 
-    //metodo que muestra todos los servicios
+    //metodo que muestra todos los empleados
     public function index()
     {
+
+
+
+
+
+//me he quedado aquí, no le gusta employees
+
+
         //buscar datos
-        $employee = Empleado::all();
+        $employees = Empleado::all();
         //pasar a la vista
         require('app/views/empleados/index.php');
     }
 
-    //metodo que muestra los detalles del servicio
+    //metodo que muestra los detalles del empleado
     public function show($args)
     {
         list($id) = $args;
-        $service = Servicio::find($id);
-        require('app/views/servicios/show.php');
+        $employee = Empleado::find($id);
+        require('app/views/empleados/show.php');
     }
 
-    //metodo que añade un nuevo servicio
+    //metodo que añade un nuevo empleado
     public function store()
     {
-        $service = new Servicio();
-        $service->name = $_REQUEST['name'];
-        $service->name = $_REQUEST['gender'];
-        $service->detail = $_REQUEST['detail'];
-        $service->price = $_REQUEST['price'];
-        $service->insert();
-        header('Location:/servicios');
+        $employee = new Empleado();
+        $employee->name = $_REQUEST['name'];
+        $employee->surname = $_REQUEST['surname'];
+        $employee->email = $_REQUEST['email'];
+        $employee->details = $_REQUEST['details'];
+        $employee->birthdate = $_REQUEST['birthdate'];
+        $employee->password = $_REQUEST['password'];
+        $employee->active = $_REQUEST['active'];
+        $employee->admin = $_REQUEST['admin'];
+        $employee->insert();
+        header('Location:/empleados');
     }
-public function edit($arguments)
-{
-    $id = (int) $arguments[0];
-    $service = Servicio::find($id);
-    require 'app/views/servicios/edit.php';
-}
-    //metodo que actualiza un servicio
+    public function edit($arguments)
+    {
+        $id = (int) $arguments[0];
+        $employee = Empleado::find($id);
+        require 'app/views/empleados/edit.php';
+    }
+    //metodo que actualiza un empleado
     public function update()
     {
         $id = $_REQUEST['id'];
-        $service = Servicio::find($id);
-        $service->id = $_REQUEST['id'];
-        $service->name = $_REQUEST['name'];
-        $service->detail = $_REQUEST['detail'];
-        $service->price = $_REQUEST['price'];
+        $employee = Empleado::find($id);
+        $employee->name = $_REQUEST['name'];
+        $employee->surname = $_REQUEST['surname'];
+        $employee->email = $_REQUEST['email'];
+        $employee->details = $_REQUEST['details'];
+        $employee->birthdate = $_REQUEST['birthdate'];
+        $employee->password = $_REQUEST['password'];
+        $employee->active = $_REQUEST['active'];
+        $employee->admin = $_REQUEST['admin'];
         //tengo que indicar que lo quiero guardar
-        $service->save();
+        $employee->save();
         //y después tengo que redireccionar
         header('Location:/servicios/index');
     }
 
-    //metodo que borra un servicio
+    //metodo que borra un empleado
     public function delete($arguments)
     {
         $id = (int) $arguments[0];
-        $service = Servicio::find($id);
-        $service->delete();
+        $employee = Empleado::find($id);
+        $employee->delete();
         header('Location:/servicios/index');
     }
 }
