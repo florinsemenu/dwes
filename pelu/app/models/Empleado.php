@@ -3,11 +3,16 @@
 namespace App\Models;
 
 use PDO;
+use DateTime;
 use Core\Model;
 
 require_once 'core/Model.php';
 class Empleado extends Model
 {
+    public function __construct()
+    {
+        $this->birthdate = DateTime::createFromFormat('Y-m-d', $this->birthdate);
+    }
 
     /*Método para buscar todos los registros*/
     public static function all()
@@ -45,6 +50,18 @@ class Empleado extends Model
         $employee = $stmt->fetch(PDO::FETCH_CLASS);
         return $employee;
     }
+
+    public static function findbyEmail($email)
+    {
+        $db = Empleado::db();
+        $stmt = $db->prepare('SELECT * FROM employees WHERE email=:email');
+        $stmt->execute(array(':email' => $email));
+        $stmt->setFetchMode(PDO::FETCH_CLASS, Empleado::class);
+        $employee = $stmt->fetch(PDO::FETCH_CLASS);
+        return $employee;
+    }
+    //me he quedado aquí
+    //TIENES QUE ACABAR LO DEL SET PASSWORD Y LO DEMÁS(PARA ACABAR LO DEL LOGIN);
 
     public function insert()
     {

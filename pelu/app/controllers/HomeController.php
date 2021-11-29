@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Controllers;
+
 class HomeController
 {
     function __construct()
     {
-        echo "HomeController -> construct <br>";
+        //echo "HomeController -> construct <br>";
     }
     public function home()
     {
