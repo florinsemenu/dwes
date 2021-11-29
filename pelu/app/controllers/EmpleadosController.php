@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-require_once "app/models/Servicio.php";
+require_once "app/models/Empleado.php";
 
 use App\Models\Empleado;
 
@@ -12,14 +12,7 @@ class EmpleadosController
     //metodo que muestra todos los empleados
     public function index()
     {
-
-
-
-
-
 //me he quedado aquí, no le gusta employees
-
-
         //buscar datos
         $employees = Empleado::all();
         //pasar a la vista

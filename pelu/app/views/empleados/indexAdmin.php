@@ -17,12 +17,18 @@
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Email</th>
+                <th>Activo</th>
+                <th>Admin</th>
             </tr>
             <?php foreach ($employees as $id => $employe) { ?>
                 <tr>
                     <td><?php echo $employe->name ?></td>
                     <td><?php echo $employe->surname ?></td>
                     <td><?php echo $employe->email ?></td>                    
+                    <td><?php echo $employe->active ?></td>
+                    <td><a href="<?= "/empleados/show/" . $employe->id ?>">Ver</a></td>
+                    <td><a href="<?= "/empleados/edit/" . $employe->id ?>">Editar</a></td>
+                    <td><a href="<?= "/empleados/delete/" . $employe->id ?>">Borrar</a></td>
                 </tr>
             <?php } ?>
         </table>
