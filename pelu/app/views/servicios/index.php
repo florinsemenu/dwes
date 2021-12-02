@@ -9,11 +9,12 @@
 </head>
 
 <body>
-<?php require "app/views/parts/header.php" ?>
+    <?php require "app/views/parts/header.php" ?>
     <div>
         <!-- Tengo que crear la vista para ver todos los servicios -->
         <h1>Lista de Servicios</h1>
-        <table>
+        <a href="<?= "/servicios/create" ?>" class="btn btn-primary">Nuevo</a>
+        <table class="table table-striped table-hover">
             <tr>
                 <th>Nombre</th>
                 <th>Genero</th>
@@ -26,9 +27,9 @@
                     <td><?php echo $service->gender ?></td>
                     <td><?php echo $service->price ?></td>
                     <td><?php echo $service->time ?></td>
-                    <td><a href="<?= "/servicios/show/" . $service->id ?>">Ver</a></td>
-                    <td><a href="<?= "/servicios/edit/" . $service->id ?>">Editar</a></td>
-                    <td><a href="<?= "/servicios/delete/" . $service->id ?>">Borrar</a></td>
+                    <td><a href="<?= "/servicios/show/" . $service->id ?>" class="btn btn-primary">Ver</a></td>
+                    <td><a href="<?= "/servicios/edit/" . $service->id ?>" class="btn btn-primary">Editar</a></td>
+                    <td><a href="<?= "/servicios/delete/" . $service->id ?>" class="btn btn-primary">Borrar</a></td>
                 </tr>
             <?php } ?>
         </table>

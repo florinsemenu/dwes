@@ -12,13 +12,17 @@ class EmpleadosController
     //metodo que muestra todos los empleados
     public function index()
     {
-//me he quedado aquí, no le gusta employees
+        //me he quedado aquí, no le gusta employees
         //buscar datos
         $employees = Empleado::all();
         //pasar a la vista
         require('app/views/empleados/index.php');
     }
-
+    //metodo para crear nuevo empleado
+    public function create()
+    {
+        require 'app/views/empleados/create.php';
+    }
     //metodo que muestra los detalles del empleado
     public function show($args)
     {
@@ -40,7 +44,7 @@ class EmpleadosController
         $employee->active = $_REQUEST['active'];
         $employee->admin = $_REQUEST['admin'];
         $employee->insert();
-        header('Location:/empleados');
+        header('Location:/empleados/index');
     }
     public function edit($arguments)
     {
@@ -64,7 +68,7 @@ class EmpleadosController
         //tengo que indicar que lo quiero guardar
         $employee->save();
         //y después tengo que redireccionar
-        header('Location:/servicios/index');
+        header('Location:/empleados/index');
     }
 
     //metodo que borra un empleado
@@ -73,6 +77,6 @@ class EmpleadosController
         $id = (int) $arguments[0];
         $employee = Empleado::find($id);
         $employee->delete();
-        header('Location:/servicios/index');
+        header('Location:/empleados/index');
     }
 }

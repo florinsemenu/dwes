@@ -17,6 +17,10 @@ class ServiciosController
         //pasar a la vista
         require('app/views/servicios/index.php');
     }
+    public function create()
+    {
+        require 'app/views/servicios/create.php';
+    }
 
     //metodo que muestra los detalles del servicio
     public function show($args)
@@ -36,7 +40,7 @@ class ServiciosController
         $service->price = $_REQUEST['price'];
         $service->time = $_REQUEST['time'];
         $service->insert();
-        header('Location:/servicios');
+        header('Location:/servicios/index');
     }
 public function edit($arguments)
 {

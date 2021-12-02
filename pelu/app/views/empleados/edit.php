@@ -17,7 +17,7 @@ use App\Models\Servicio;
     <div>
         <h1>Edicion de empleado</h1>
         <form method="post" action="<?= "/empleados/update" ?>">
-            <input type="hidden" name="id" value="<?php echo $user->id ?>">
+            <input type="hidden" name="id" value="<?php echo $employee->id ?>">
             <div>
                 <label>Nombre</label>
                 <input type="text" name="name" value="<?php echo $employee->name ?>">

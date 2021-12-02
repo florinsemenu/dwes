@@ -13,7 +13,7 @@
     <main>
         <div>
             <h1>Alta Servicios</h1>
-            <form action="<?= "/servicios/create" ?>" method="post">
+            <form action="<?= "/servicios/store" ?>" method="post">
                 <div>
                     <label>Nombre</label>
                     <input type="text" name="name">

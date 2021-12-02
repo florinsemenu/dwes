@@ -96,7 +96,9 @@ class Empleado extends Model
     public function save()
     {
         $db = Empleado::db();
-        $stmt = $db->prepare('UPDATE employees SET name = :name, surname = :surname, email = :email, details = :details, birthdate = :birthdate, password = :password, active = :active, admin = :admin WHERE id = :id');
+        $stmt = $db->prepare('UPDATE employees SET name = :name, surname = :surname, email = :email, 
+        details = :details, birthdate = :birthdate, password = :password, 
+        active = :active, admin = :admin WHERE id = :id');
         $stmt->bindValue(':name', $this->name);
         $stmt->bindValue(':surname', $this->surname);
         $stmt->bindValue(':email', $this->email);

@@ -13,7 +13,7 @@
     <main>
         <div>
             <h1>Alta Empleados</h1>
-            <form action="<?= "/empleados/create" ?>" method="post">
+            <form action="<?= "/empleados/store" ?>" method="post">
                 <div>
                     <label>Nombre</label>
                     <input type="text" name="name">
