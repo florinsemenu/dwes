@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alta servicio</title>
+    <?php require "app/views/parts/head.php" ?>
 </head>
 
 <body>
-    <?php require "app/views/header.php" ?>
+<?php require "app/views/parts/header.php" ?>
     <main>
         <div>
             <h1>Alta Servicios</h1>
@@ -37,6 +38,8 @@
             </form>
         </div>
     </main>
+    <?php require "app/views/parts/footer.php" ?>
 </body>
+<?php require "app/views/parts/scripts.php" ?>
 
 </html>

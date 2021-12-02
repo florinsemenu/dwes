@@ -49,22 +49,25 @@ class Servicio extends Model
     public function insert()
     {
         $db = Servicio::db();
-        $stmt = $db->prepare('INSERT INTO services(id, name, detail, price) VALUES(:id, :name, :detail, :price)');
-        $stmt->bindValue(':id', $this->id);
+        $stmt = $db->prepare('INSERT INTO services(name, gender, detail, price, time) VALUES(:name, :gender, :detail, :price, :time)');
         $stmt->bindValue(':name', $this->name);
+        $stmt->bindValue(':gender', $this->gender);
         $stmt->bindValue(':detail', $this->detail);
-        $stmt->bindValue(':detail', $this->price);
+        $stmt->bindValue(':price', $this->price);
+        $stmt->bindValue(':time', $this->time);
         return $stmt->execute();
     }
 
     public function save()
     {
         $db = Servicio::db();
-        $stmt = $db->prepare('UPDATE services SET id = :id, name = :name, detail = :detail, price = :price WHERE id = :id');
+        $stmt = $db->prepare('UPDATE services SET name = :name, gender = :gender, detail = :detail, price = :price, time = :time WHERE id = :id');
         $stmt->bindValue(':id', $this->id);
         $stmt->bindValue(':name', $this->name);
+        $stmt->bindValue(':gender', $this->gender);
         $stmt->bindValue(':detail', $this->detail);
         $stmt->bindValue(':price', $this->price);
+        $stmt->bindValue(':time', $this->time);
         return $stmt->execute();
     }
     public function delete()

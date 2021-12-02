@@ -6,6 +6,8 @@ use PDO;
 use DateTime;
 use Core\Model;
 
+use const Config\PASSWORD;
+
 require_once 'core/Model.php';
 class Empleado extends Model
 {
@@ -62,11 +64,22 @@ class Empleado extends Model
     }
     //me he quedado aquí
     //TIENES QUE ACABAR LO DEL SET PASSWORD Y LO DEMÁS(PARA ACABAR LO DEL LOGIN);
-
+    public function setPassword($password)
+    {
+        $password = password_hash($password, PASSWORD_BCRYPT);
+        $db = Empleado::db();
+        $stmt = $db->prepare('UPDATE employees SET password = :password WHERE id = ::id');
+        $stmt->bindValue(':id', $this->id);
+        $stmt->bindValue(':password', $password);
+        $stmt->execute();
+        return $password;
+    }
+    public function passwordVerify($password, $employee)
+    {
+        return password_verify($password, $employee->password);
+    }
     public function insert()
     {
-
-        //hay que arreglar de aquí hacia abajo
         $db = Empleado::db();
         $stmt = $db->prepare('INSERT INTO employees(name, surname, email, details, birthdate, password, active, admin) VALUES(:name, :surname, :email, :details, :birthdate, :password, :active, :admin)');
         $stmt->bindValue(':name', $this->name);

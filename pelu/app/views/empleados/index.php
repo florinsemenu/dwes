@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Empleados</title>
+    <?php require "app/views/parts/head.php" ?>
 </head>
 
 <body>
-    <?php require "app/views/header.php" ?>
+<?php require "app/views/parts/header.php" ?>
     <div>
         <!-- Tengo que crear la vista para ver todos los empleados -->
         <h1>Lista de Empleados</h1>
@@ -24,7 +25,7 @@
                 <tr>
                     <td><?php echo $employe->name ?></td>
                     <td><?php echo $employe->surname ?></td>
-                    <td><?php echo $employe->email ?></td>                    
+                    <td><?php echo $employe->email ?></td>
                     <td><?php echo $employe->active ?></td>
                     <td><a href="<?= "/empleados/show/" . $employe->id ?>">Ver</a></td>
                     <td><a href="<?= "/empleados/edit/" . $employe->id ?>">Editar</a></td>
@@ -33,6 +34,8 @@
             <?php } ?>
         </table>
     </div>
+    <?php require "app/views/parts/footer.php" ?>
 </body>
+<?php require "app/views/parts/scripts.php" ?>
 
 </html>

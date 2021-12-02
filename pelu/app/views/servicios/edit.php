@@ -9,10 +9,11 @@ use App\Models\Servicio;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edición de servicio</title>
+    <?php require "app/views/parts/head.php" ?>
 </head>
 
 <body>
-<?php require "app/views/header.php" ?>
+<?php require "app/views/parts/header.php" ?>
     <div>
         <h1>Edicion de servicio</h1>
         <form method="post" action="<?= "/servicios/update" ?>">
@@ -40,6 +41,7 @@ use App\Models\Servicio;
         <button type="submit">Enviar</button>
         </form>
     </div>
+    <?php require "app/views/parts/footer.php" ?>
 </body>
-
+<?php require "app/views/parts/scripts.php" ?>
 </html>

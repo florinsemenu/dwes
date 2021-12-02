@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Servicios</title>
+    <?php require "app/views/parts/head.php" ?>
 </head>
 
 <body>
-    <?php require "app/views/header.php" ?>
+<?php require "app/views/parts/header.php" ?>
     <div>
         <!-- Tengo que crear la vista para ver todos los servicios -->
         <h1>Lista de Servicios</h1>
@@ -32,6 +33,8 @@
             <?php } ?>
         </table>
     </div>
+    <?php require "app/views/parts/footer.php" ?>
 </body>
+<?php require "app/views/parts/scripts.php" ?>
 
 </html>
