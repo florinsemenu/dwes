@@ -26,6 +26,8 @@
                     <td><?php echo $service->price ?></td>
                     <td><?php echo $service->time ?></td>
                     <td><a href="<?= "/servicios/show/" . $service->id ?>">Ver</a></td>
+                    <td><a href="<?= "/servicios/edit/" . $service->id ?>">Editar</a></td>
+                    <td><a href="<?= "/servicios/delete/" . $service->id ?>">Borrar</a></td>
                 </tr>
             <?php } ?>
         </table>
