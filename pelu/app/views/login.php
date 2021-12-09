@@ -29,7 +29,7 @@
         </div>
         <div>
             <br />
-            <p><?php echo $_SESSION['message'] ?></p>
+                <?php echo $_SESSION['message'] ?></p>
         </div>
         </div>
     </main>

@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+require_once "app/models/Empleado.php";
+
 use App\Models\Empleado;
 
 class LoginController
@@ -10,7 +12,7 @@ class LoginController
     {
         // echo "En LoginController";
     }
-    public function index()
+    public function home()
     {
         require "app/views/login.php";
     }
@@ -19,8 +21,7 @@ class LoginController
         $email = $_POST['email'];
         $password = $_POST['password'];
         $employee = Empleado::findbyEmail($email);
-
-        if (!$employee) {
+        if ($employee == false) {
             $_SESSION['message'] = 'Error, el usuario no existe. ';
             header('Location:/login');
         } else {

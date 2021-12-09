@@ -43,9 +43,11 @@ class App
             die();
         }
         $controllerName = '\\App\\Controllers\\' . $controllerName;
+       
 
         //creo un objeto, llamo al metodo del objeto y le paso los argumentos.
         $controllerObject = new $controllerName;
+       
         if (method_exists($controllerName, $method)) {
             $controllerObject->$method($arguments);
         } else {

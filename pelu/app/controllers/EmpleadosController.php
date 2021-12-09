@@ -34,6 +34,7 @@ class EmpleadosController
     //metodo que añade un nuevo empleado
     public function store()
     {
+       
         $employee = new Empleado();
         $employee->name = $_REQUEST['name'];
         $employee->surname = $_REQUEST['surname'];

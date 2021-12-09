@@ -7,13 +7,25 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="/home/home">Home</a>
+        <a class="nav-link" href="/home/home">Home Invitado</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/empleados/index">Ver Empleados</a>
+        <a class="nav-link" href="<?php echo isset($_SESSION['employee']) ? "/home" : "" ?>">
+          <?php echo isset($_SESSION['employee']) ? "Home" : "" ?></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="/servicios/index">Ver Servicios</a>
+        <a class="nav-link" href="/empleados/index">Ver Empleados Invitado</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="<?php echo isset($_SESSION['employee']) ? "/empleados" : "" ?>">
+          <?php echo isset($_SESSION['employee']) ? "Ver Empleados" : "" ?></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/servicios/index">Ver Servicios Invitado</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="<?php echo isset($_SESSION['employee']) ? "/servicios" : "" ?>">
+          <?php echo isset($_SESSION['employee']) ? "Ver Servicios" : "" ?></a>
       </li>
     </ul>
 
@@ -21,7 +33,8 @@
     <ul class="navbar-nav">
       <li class="nav-item active"><a class="nav-link" href=""><?php echo isset($_SESSION['employee']) ? $_SESSION['employee']->name : '' ?></a></li>
       <li class="nav-item active">
-        <a class="nav-link" href="/login/login">Login</a>
+        <a class="nav-link" href="<?php echo isset($_SESSION['employee']) ?  "/login/logout" : "/login" ?>">
+          <?php echo isset($_SESSION['employee']) ? "Logout" : "Login" ?></a>
       </li>
     </ul>
   </div>

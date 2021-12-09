@@ -62,24 +62,14 @@ class Empleado extends Model
         $employee = $stmt->fetch(PDO::FETCH_CLASS);
         return $employee;
     }
-    //me he quedado aquí
-    //TIENES QUE ACABAR LO DEL SET PASSWORD Y LO DEMÁS(PARA ACABAR LO DEL LOGIN);
-    public function setPassword($password)
-    {
-        $password = password_hash($password, PASSWORD_BCRYPT);
-        $db = Empleado::db();
-        $stmt = $db->prepare('UPDATE employees SET password = :password WHERE id = ::id');
-        $stmt->bindValue(':id', $this->id);
-        $stmt->bindValue(':password', $password);
-        $stmt->execute();
-        return $password;
-    }
+
     public function passwordVerify($password, $employee)
     {
         return password_verify($password, $employee->password);
     }
     public function insert()
     {
+        $password = password_hash($this->password, PASSWORD_BCRYPT);
         $db = Empleado::db();
         $stmt = $db->prepare('INSERT INTO employees(name, surname, email, details, birthdate, password, active, admin) VALUES(:name, :surname, :email, :details, :birthdate, :password, :active, :admin)');
         $stmt->bindValue(':name', $this->name);
@@ -87,7 +77,7 @@ class Empleado extends Model
         $stmt->bindValue(':email', $this->email);
         $stmt->bindValue(':details', $this->details);
         $stmt->bindValue(':birthdate', $this->birthdate);
-        $stmt->bindValue(':password', $this->password);
+        $stmt->bindValue(':password', $password);
         $stmt->bindValue(':active', $this->active);
         $stmt->bindValue(':admin', $this->admin);
         return $stmt->execute();
@@ -95,16 +85,18 @@ class Empleado extends Model
 
     public function save()
     {
+        $password = password_hash($this->password, PASSWORD_BCRYPT);
         $db = Empleado::db();
         $stmt = $db->prepare('UPDATE employees SET name = :name, surname = :surname, email = :email, 
-        details = :details, birthdate = :birthdate, password = :password, 
+        details = :details, birthdate = :birthdate, password=:password,
         active = :active, admin = :admin WHERE id = :id');
+        $stmt->bindValue(':id', $this->id);
         $stmt->bindValue(':name', $this->name);
         $stmt->bindValue(':surname', $this->surname);
         $stmt->bindValue(':email', $this->email);
         $stmt->bindValue(':details', $this->details);
         $stmt->bindValue(':birthdate', $this->birthdate);
-        $stmt->bindValue(':password', $this->password);
+        $stmt->bindValue(':password', $password);
         $stmt->bindValue(':active', $this->active);
         $stmt->bindValue(':admin', $this->admin);
         return $stmt->execute();
