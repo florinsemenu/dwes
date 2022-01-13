@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PruebaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "hola mundo";
 });
+Route::get('prueba', [PruebaController::class, 'prueba']);
+Route::get('prueba2/{parametro}', [PruebaController::class, 'prueba2']);
