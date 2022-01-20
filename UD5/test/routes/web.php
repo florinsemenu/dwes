@@ -14,7 +14,11 @@ use App\Http\Controllers\PruebaController;
 */
 
 Route::get('/', function () {
-    return "hola mundo";
+    return view ('welcome');
 });
 Route::get('prueba', [PruebaController::class, 'prueba']);
 Route::get('prueba2/{parametro}', [PruebaController::class, 'prueba2']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
